@@ -1,0 +1,65 @@
+{
+  "skill_name": "cli-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to build a CLI tool in Node.js that wraps our company's REST API for managing projects. The API uses API key auth and has endpoints for listing, creating, updating, and deleting projects. I want it to be usable by coding agents like Claude Code.",
+      "expected_output": "A Node.js CLI project with Commander.js, buildXxxCall pure functions, structured JSON output with --json flag, error hints with What+Why+Hint format, and unit tests for build functions",
+      "files": [],
+      "expectations": [
+        "Project uses Commander.js or similar CLI framework",
+        "Build functions are pure (no I/O, no side effects)",
+        "Output supports --json flag for structured JSON",
+        "Errors follow What+Why+Hint format",
+        "Unit tests cover build function argument mapping",
+        "Commands follow Search-Fetch-Act pattern (list/get/create/update/delete)",
+        "TTY detection is implemented for output formatting",
+        "An escape hatch command (api) exists for direct API access"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create a Python CLI using Typer that wraps a Notion-like API with OAuth authentication. It should support search, page CRUD, and database queries. Coding agents will be the primary users.",
+      "expected_output": "A Python CLI with Typer, OAuth 2.0 PKCE auth flow, structured output, error hint system, and comprehensive help text",
+      "files": [],
+      "expectations": [
+        "Project uses Typer or Click",
+        "OAuth 2.0 with PKCE authentication is implemented",
+        "Token storage uses OS-specific config directories with proper permissions (0o600)",
+        "All commands support --json and --raw output modes",
+        "Error messages include What, Why, and Hint components",
+        "Help text exists at root, subcommand, and flag levels",
+        "Pure functions separate CLI args from API call construction"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need a Go CLI tool using Cobra that talks to our internal gRPC service. It has about 40 endpoints grouped into users, projects, billing, and analytics. The main users are AI coding assistants in our CI pipeline. How should I structure this?",
+      "expected_output": "Architecture recommendation with Go/Cobra scaffold using search+execute pattern for the large API surface, structured output, and the four agent-first principles",
+      "files": [],
+      "expectations": [
+        "Recommends subcommand groups for the 4 domains",
+        "Includes an api escape hatch command for less-used endpoints",
+        "Uses Cobra framework",
+        "Output defaults to JSON for agent consumption",
+        "Error handling follows structured What+Why+Hint format",
+        "Suggests promoting most-used endpoints to dedicated commands",
+        "Testing strategy focuses on pure function unit tests"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Help me add proper error handling to my existing CLI tool. Right now errors just print a stack trace and agents keep retrying the same failing command. I'm using Rust with Clap. The tool wraps a REST API.",
+      "expected_output": "Structured error handling implementation with What+Why+Hint format, pattern-matching hint rules, JSON error output, and Rust/Clap-specific guidance",
+      "files": [],
+      "expectations": [
+        "Errors restructured into What+Why+Hint format",
+        "Hint rules use pattern matching (regex) against error messages",
+        "JSON error format works with --json flag",
+        "Hints provide actionable next steps that agents can follow",
+        "Implementation uses Rust error handling idioms (thiserror or anyhow)",
+        "Common patterns covered: not-found, unauthorized, rate-limited, invalid-input"
+      ]
+    }
+  ]
+}
