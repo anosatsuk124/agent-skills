@@ -116,7 +116,8 @@ Before writing the PR message, think through the changes:
 
 ## Step 5: Generate the PR Message
 
-Write the PR message using this structure. Adapt sections based on relevance —
+Write the PR message in **Japanese keigo (polite/formal Japanese, です・ます調)**.
+Use this structure. Adapt sections based on relevance —
 skip sections that do not apply (e.g., omit Breaking Changes if there are none).
 The goal is a message that gives a reviewer everything they need to understand
 and review the PR quickly.
@@ -124,52 +125,53 @@ and review the PR quickly.
 ### Template
 
 ```markdown
-# <Title: concise summary, max ~72 characters>
+# <タイトル: 簡潔な要約、最大約72文字>
 
-## Summary
+## 概要
 
-<2-4 sentences explaining what this PR does and why. A reviewer who reads only
-this section should understand the PR's purpose.>
+<このPRが何をするものか、なぜ必要かを2〜4文で説明してください。
+このセクションだけを読んだレビュアーがPRの目的を理解できるようにしてください。>
 
-## Motivation / Context
+## 背景・動機
 
-<Why is this change needed? Reference issues, user reports, or business context.
-If commit messages or branch name reference an issue number, mention it here.
-If motivation cannot be determined from the code alone, note what you can infer
-and suggest the author fill in additional context.>
+<なぜこの変更が必要なのかを説明してください。関連するissue番号、ユーザー報告、
+ビジネス上の背景があれば言及してください。コードのみから動機を判断できない場合は、
+推測できる範囲を記載し、著者に追記を促してください。>
 
-## Key Changes
+## 主な変更点
 
-<Bulleted list of significant changes, grouped logically. Each bullet explains
-WHAT changed and briefly WHY — not just file names.>
+<変更内容を論理的にグループ化した箇条書きで説明してください。
+ファイル名だけでなく、何が・なぜ変更されたかを簡潔に記載してください。>
 
-- **<Area/Component>**: <Description of change>
-- **<Area/Component>**: <Description of change>
+- **<領域・コンポーネント>**: <変更内容の説明>
+- **<領域・コンポーネント>**: <変更内容の説明>
 
-## Testing Notes
+## テストについて
 
-<How to verify the changes. Mention new or modified tests. Suggest manual
-testing steps if applicable. If testing strategy is unclear from the diff,
-suggest what the author should add.>
+<変更の検証方法をチェックボックス形式で記載してください。
+新規・変更されたテストや手動テストの手順を以下のように列挙してください。
+テスト方針がdiffから読み取れない場合は、著者への追記提案もチェックボックスとして記載してください。>
 
-## Breaking Changes
+- [ ] <テスト項目1>
+- [ ] <テスト項目2>
 
-<Only include if applicable. Describe what breaks, who is affected, and what
-they need to do to adapt.>
+## 破壊的変更
+
+<該当する場合のみ記載してください。何が壊れるか、誰が影響を受けるか、
+対応のために何をする必要があるかを説明してください。>
 ```
 
 ### Writing Guidelines
 
-- **Be specific.** "Extracted payment validation into `PaymentValidator` to
-  enable unit testing without Stripe API calls" beats "Refactored payment module."
-- **Use commit history for narrative.** If commits tell a story (refactor first,
-  then feature, then edge case fixes), let the PR message follow that arc.
-- **Mention metrics sparingly.** A reviewer cares more about what changes mean
-  than raw line counts.
-- **Flag uncertainty.** "The author should confirm whether X is intentional" is
-  better than guessing incorrectly.
-- **Match project tone.** If existing PR messages are terse and technical, be
-  concise. If they are detailed, write more.
+- **具体的に記述すること。**「決済バリデーションを `PaymentValidator` に切り出し、
+  Stripe APIなしのユニットテストを可能にしました」のように、何をなぜ変えたかを明確にしてください。
+- **コミット履歴を活用すること。** コミットが物語を語っている場合（リファクタ→機能追加→
+  エッジケース対応の順など）、PRメッセージもその流れに沿って書いてください。
+- **数字は控えめに。** 行数などの数値よりも、変更の意味を重視してください。
+- **不確かな点はフラグを立てること。**「著者に意図を確認することをお勧めします」と
+  記載する方が、誤った推測をするよりも適切です。
+- **日本語の敬語（です・ます調）で統一すること。** 技術用語（JWT, API, Bearer token等）は
+  英語表記のまま使用してください。
 
 ## Step 6: Save the PR Message
 
@@ -194,8 +196,8 @@ they need to do to adapt.>
 After saving:
 
 1. Display the full PR message content so the user can read it immediately
-2. Tell the user where the file was saved (relative path)
-3. Ask if they want any adjustments — tone, detail level, sections to add/remove
+2. Tell the user where the file was saved (relative path), in Japanese keigo
+3. Ask in Japanese keigo if they want any adjustments — tone, detail level, sections to add/remove
 
 ## Edge Cases
 
