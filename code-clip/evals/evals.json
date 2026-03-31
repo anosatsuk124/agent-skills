@@ -1,0 +1,68 @@
+{
+  "skill_name": "code-clip",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Copy the `authenticate` function from src/auth.py lines 15-30 to a clipboard called 'auth-func', then paste it into src/new_auth.py at the top of the file.",
+      "expected_output": "Agent uses code-clip copy with --file and --lines, then code-clip paste --json to get structured content, then writes content into the destination file, then cleans up.",
+      "files": ["src/auth.py", "src/new_auth.py"],
+      "expectations": [
+        "Uses code-clip copy with meaningful name",
+        "Specifies --file and --lines flags",
+        "Uses --json flag on paste for structured output",
+        "Extracts .content from JSON and inserts it at correct location",
+        "Deletes or clears the clipboard entry after use"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Move all the helper functions from utils.py (lines 1-50) into a new file called helpers.py.",
+      "expected_output": "Agent uses code-clip cut to save the functions and record removal intent, removes the original lines from utils.py, creates helpers.py with the pasted content.",
+      "files": ["utils.py"],
+      "expectations": [
+        "Uses cut (not copy) since this is a move operation",
+        "Reads removal_descriptor from cut output to identify lines to delete",
+        "Removes original lines from utils.py using Edit",
+        "Creates helpers.py with pasted content",
+        "Uses --json on cut command to get structured output"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I'm refactoring the payment module. Before I start, save the current state so I can compare what changed when I'm done.",
+      "expected_output": "Agent copies the entire src/payment.py as 'payment-before', makes changes, copies the updated state as 'payment-after', diffs them, presents results.",
+      "files": ["src/payment.py"],
+      "expectations": [
+        "Creates a 'before' snapshot with code-clip copy --tag checkpoint",
+        "After changes, creates an 'after' snapshot",
+        "Uses code-clip diff to compare the two entries",
+        "Presents the diff output to the user",
+        "Clears checkpoint entries afterward"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Show me all the code snippets I currently have saved.",
+      "expected_output": "Agent runs code-clip list --json and presents the results in a readable format.",
+      "files": [],
+      "expectations": [
+        "Uses code-clip list --json",
+        "Presents the entries list in a readable format",
+        "Handles empty clipboard gracefully with a clear message"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I need to collect the validation logic from three different files — validator.py lines 10-25, auth.py lines 40-55, and payment.py lines 5-15 — and combine them into a new file called combined_validators.py.",
+      "expected_output": "Agent copies each fragment with a meaningful name and tag, merges them in order with code-clip merge, pastes into the new file, and cleans up.",
+      "files": ["validator.py", "auth.py", "payment.py"],
+      "expectations": [
+        "Copies each fragment with --tag for grouping",
+        "Uses code-clip merge to combine them in the right order",
+        "Uses appropriate separator between fragments",
+        "Creates combined_validators.py with merged content",
+        "Clears all source entries after merge"
+      ]
+    }
+  ]
+}
